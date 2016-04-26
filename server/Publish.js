@@ -42,9 +42,6 @@ if (Meteor.isClient) {
 /*	return Location.find({},{sort: {createdAt: -1}});
 });*/
 
-
-
-
 Meteor.publish("images", function() {
   return Collections.Images.find();
 });
@@ -61,3 +58,7 @@ Meteor.publish("audios",function(){
 Meteor.publish("videos",function(){
   return Collections.Videos.find();
 });
+
+Meteor.publish("threads",function(){
+  return Thread.find();
+})
