@@ -126,3 +126,30 @@ margin-right: 7px;
 .container1{
 	margin-top:80px;
 }
+#replyBox{
+
+}
+#delete{
+	cursor: pointer;
+}
+#edit{
+	margin-left: 5px;
+	cursor: pointer;	
+}
+#reply{
+	margin-left: 5px;
+	cursor: pointer;
+}
+#postcount{
+	float: right;
+}
+#replyBox{
+	margin-left: 440px;
+	
+}
+#replyOkbtn{
+	margin-left: 5px;
+}
+/*#replyComment{
+	margin-left: 210px;
+}*/

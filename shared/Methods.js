@@ -273,13 +273,18 @@ Meteor.methods({
     //--------------------------------group Discussion--------------------------
 
 	addThread : function(msg){
+		
 		var thread = {
 				content:msg,
-				owner:Meteor.user().username,
-				createdAt: new Date()
+				owner:{
+					id:this.userId,
+					name : Meteor.user().profile.name
+				},
+				publishedAt: new Date()
 		};
 		Thread.insert(thread);		
 	},
+
 	editThread : function(){
 		
 	}   

@@ -21,14 +21,17 @@
         <div class="widget-area no-padding blank">
             <div class="status-upload">
                 <form class="new-post">
-                    
+                  
                   <textarea placeholder="Write here to create thread" name="commentbox" id="commentbox" required></textarea>
                     
                    <ul>
                       
                       <!--<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>-->
                   </ul>
-                  <button type="submit" class="btn btn-success green" id="add"><i class="fa fa-share"></i> Post</button>
+                  <button type="submit" class="btn btn-success green" id="add">
+                    <span class="glyphicon glyphicon-send" id="send" style="margin-right: 7px;"></span>
+                       Post
+                  </button>
 
                 </form>
                 </div><!-- Status Upload  -->
@@ -44,22 +47,32 @@
 <template name = "postMessage">
   <div class="container">
     <h4 style="margin: 20px ;width: 700px">Threads :
-      <span class="badge" style="float: right;">Total : {{count}}</span>
+      <span class="badge" id="postcount">Total : {{count}}</span>
     </h4> 
     <br>
+      <ul>
       {{#each message}}
       
+      <li>
+      <div id="commentMessageContainer">
       <div class="well well-lg" style="width: 700px;margin-left: 20px;display: inline-block;">
       <ul>
-          <li><div id="username" style="display: inline-block;">{{owner}} : </div></li>
+          <li><div id="username" style="display: inline-block;">{{owner.name}}: </div></li>
           <li><span id="content">{{content}}</span></li>
-          <li><span id = "createdAt" style="float: right">{{createdAt}}</span></li>
+          <li><span id = "createdAt" style="float: right">{{publishedAt}}</span></li>
       </ul>
       </div>
-      <span class="glyphicon glyphicon-trash" id="delete" style="cursor: pointer;"></span>
-      <span class="glyphicon glyphicon-pencil" id="edit" style="margin-left: 5px; cursor: pointer;"></span>
-      <span class="fa fa-reply" id="reply" style="margin-left: 5px ; cursor: pointer;"></span>
+      {{#if admin}}
+      <span class="glyphicon glyphicon-trash fa-2x" id="delete"></span>
+      <span class="glyphicon glyphicon-pencil fa-2x" id="edit"></span>
+      <span class="glyphicon glyphicon-comment fa-2x" id="reply"></span>
+      {{else}}
+      <span class="glyphicon glyphicon-comment fa-2x" id="reply"></span>
+      
+      {{/if}}
+      </div>
+      </li>
     {{/each}} 
-    
+      </ul>
   </div>
 </template>
