@@ -50,11 +50,25 @@ Template.postMessage.events({
     },
     'click #reply' : function(){
         
-        $('<div class="container-fluid"><div class="col-md-8" style="background-color:lavender"><input type="text" id="replyBox"><input type="submit" id="replyOkbtn" class="btn btn-primary" value="Ok"></div></div><br> ').insertAfter("#reply");
+        //$('<div class="container-fluid"><div class="col-md-8" style="background-color:lavender"><input type="text" id="replyBox"><input type="submit" id="replyOkbtn" class="btn btn-primary" value="Ok"></div></div><br> ').insertAfter("#reply");
+        //var textbox = $('<div class="container-fluid"><div class="col-md-8" style="background-color:lavender"><input type="text" id="replyBox"><input type="submit" id="replyOkbtn" class="btn btn-primary" value="Ok"></div></div><br>');
+        //$(this).parent().after(textbox);//.slideToggle("slow");
+        //$("#reply").after(textbox);    
+        //$(this).parent().slideDown('slow');
+        $("#replyPostbox").slideDown('slow');
+    }, 
+    
+    'click #hidebtn' : function(){
+            $("#replyPostbox").slideUp('slow');
     },
+
     'click #replyOkbtn' : function(event){
-        var replymsg = event.Currenttarget.replyBox.value();
-        alert("replymsg");
-        $("#commentMessageContainer").append("<ul><li>hello</li><ul>");
+        //var replymsg = event.Currenttarget.replyBox.value();
+        //alert("replymsg");
+        //$("#commentMessageContainer").append("<ul><li>hello</li><ul>");
+        //$(this).parent().append("");
+        //$("#replyCommentbox").append("<li>" + $("#replyBox").val() + "</li>");
+        //$("#replyPostbox").slideUp('slow');
+        $("<li>" + $("#replyBox").val() + "</li>").insertAfter("#replyPostbox");
     }
 });

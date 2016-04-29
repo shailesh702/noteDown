@@ -70,6 +70,18 @@
       <span class="glyphicon glyphicon-comment fa-2x" id="reply"></span>
       
       {{/if}}
+      <!-- Reply on POST -->
+          <div class="container-fluid" id="replyPostbox" style="display: none;">
+          <div class="col-md-8" style="background-color:lavender">
+          <div class="pull-right">
+            <input type="text" id="replyBox">
+            <button type="submit" id="replyOkbtn" class="btn btn-primary">Ok</button>
+            <button type="submit" id="hidebtn" class="btn btn-primary">Hide</button>
+          </div>
+          <ul id="replyCommentbox"></ul>
+          </div>
+          </div><br>
+      <!--  -->
       </div>
       </li>
     {{/each}} 
