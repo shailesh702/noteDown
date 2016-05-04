@@ -272,15 +272,20 @@ Meteor.methods({
 
     //--------------------------------group Discussion--------------------------
 
-	addThread : function(msg){
-		
+	addThread : function(post){
+		var replypostId =1;
+		replypostId++;
 		var thread = {
-				content:msg,
+				content:post,
 				owner:{
 					id:this.userId,
 					name : Meteor.user().profile.name
 				},
 				publishedAt: new Date()
+				/*replypost:{
+					replypostId:replypostId,
+					replymsg:
+				}*/
 		};
 		Thread.insert(thread);		
 	},

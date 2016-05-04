@@ -65,22 +65,33 @@
       {{#if admin}}
       <span class="glyphicon glyphicon-trash fa-2x" id="delete"></span>
       <span class="glyphicon glyphicon-pencil fa-2x" id="edit"></span>
-      <span class="glyphicon glyphicon-comment fa-2x" id="reply"></span>
+      <span class="glyphicon glyphicon-comment fa-2x" id="replyIcon"></span>
       {{else}}
-      <span class="glyphicon glyphicon-comment fa-2x" id="reply"></span>
+      <span class="glyphicon glyphicon-comment fa-2x" id="replyIcon"></span>
       
       {{/if}}
-      <!-- Reply on POST -->
-          <div class="container-fluid" id="replyPostbox" style="display: none;">
+      <!-- Text box on Post button  -->
+        <div id="commentboxContainer">
+          <div class="container-fluid" id="replyPostboxContainer" style="display: none;">
           <div class="col-md-8" style="background-color:lavender">
           <div class="pull-right">
             <input type="text" id="replyBox">
             <button type="submit" id="replyOkbtn" class="btn btn-primary">Ok</button>
             <button type="submit" id="hidebtn" class="btn btn-primary">Hide</button>
           </div>
-          <ul id="replyCommentbox"></ul>
           </div>
-          </div><br>
+          </div>
+      <!--  -->    
+      <!--Reply message :  Box on Reply button  -->
+          <div class="container-fluid">
+            <div class="col-md-8" style="background-color:lavender">
+            <div class="pull-right">
+              <ul id="replyCommentbox">
+              </ul>
+            </div>
+            </div>
+          </div>
+        </div>
       <!--  -->
       </div>
       </li>

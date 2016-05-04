@@ -136,7 +136,7 @@ margin-right: 7px;
 	margin-left: 5px;
 	cursor: pointer;	
 }
-#reply{
+#replyIcon{
 	margin-left: 5px;
 	cursor: pointer;
 }
@@ -150,6 +150,6 @@ margin-right: 7px;
 #replyOkbtn{
 	margin-left: 5px;
 }
-/*#replyComment{
-	margin-left: 210px;
-}*/
+#replyCommentbox{
+
+}

@@ -1,4 +1,4 @@
-
+replyId = 0;
 Template.groupDiscuss.onCreated(function(){
     var self = this;
     this.autorun(function(){
@@ -11,7 +11,6 @@ Template.groupdiscussion.events({
     "submit .new-post": function(event){
         event.preventDefault();
         var text = event.target.commentbox.value;
-        //alert(text);
         Meteor.call("addThread",text);
         event.target.commentbox.value='';
     }
@@ -26,10 +25,6 @@ Template.postMessage.helpers({
     'count':function(){
         return Thread.find().count();
     },
-    /*'username' : function(){
-        //return console.log(users.find({id:Meteor.user()._id},{username :1,Meteor.user()._id:0}));
-
-    }*/
     'admin' : function(){
         return Thread.findOne({_id: this._id,'owner.id':Meteor.user()._id });
 
@@ -48,27 +43,46 @@ Template.postMessage.events({
             alert("Implementaion still going on");
         }
     },
-    'click #reply' : function(){
+    'click #replyIcon' : function(){
         
         //$('<div class="container-fluid"><div class="col-md-8" style="background-color:lavender"><input type="text" id="replyBox"><input type="submit" id="replyOkbtn" class="btn btn-primary" value="Ok"></div></div><br> ').insertAfter("#reply");
         //var textbox = $('<div class="container-fluid"><div class="col-md-8" style="background-color:lavender"><input type="text" id="replyBox"><input type="submit" id="replyOkbtn" class="btn btn-primary" value="Ok"></div></div><br>');
         //$(this).parent().after(textbox);//.slideToggle("slow");
-        //$("#reply").after(textbox);    
         //$(this).parent().slideDown('slow');
-        $("#replyPostbox").slideDown('slow');
+        //$(this).children().slideDown();
+        $("#commentboxContainer").children("#replyPostboxContainer").slideDown();
     }, 
     
     'click #hidebtn' : function(){
-            $("#replyPostbox").slideUp('slow');
+            $("#replyPostboxContainer").slideUp();
     },
 
-    'click #replyOkbtn' : function(event){
+    'click #replyOkbtn' : function(){
         //var replymsg = event.Currenttarget.replyBox.value();
         //alert("replymsg");
         //$("#commentMessageContainer").append("<ul><li>hello</li><ul>");
         //$(this).parent().append("");
         //$("#replyCommentbox").append("<li>" + $("#replyBox").val() + "</li>");
         //$("#replyPostbox").slideUp('slow');
-        $("<li>" + $("#replyBox").val() + "</li>").insertAfter("#replyPostbox");
+        //$("<li>" + $("#replyBox").val() + "</li>").insertAfter("#replyPostboxContainer");
+        
+        
+        replyId++;
+        var replymsg = $("#replyBox").val();
+        Thread.update(
+                        {_id:this._id},
+                        {
+                            $push:{
+                                replypost :{
+                                    $each:[{replypostId:replyId,replymsg : replymsg}]
+                                    }
+                                }
+                        }
+                    );
+        
+        $("#replyCommentbox").append("<li>" + replymsg + "</li>");//.css({"top-margin":"0px","border-bottom":"1px solid grey"});
+
+        $("#replyBox").val(" ");
+        $("#replyCommentbox").children().css({"border-bottom":"1px solid grey"});
     }
 });
